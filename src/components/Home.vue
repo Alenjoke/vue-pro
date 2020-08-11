@@ -7,10 +7,9 @@
         </mt-swipe>
         <!-- 九宫格 -->
         <div class="container">
-            <router-link to="/test" v-for="index in count" :key='index'>
-                <div  class="items">
-                    {{index}}
-                </div>
+            <router-link :to="module.route" class="link" v-for="module in modules" :key='module.id'>
+                <div class="items" :class="module.class"></div>
+                <span class="text">{{module.text}}</span>
             </router-link>
         </div>
     </div>
@@ -26,7 +25,17 @@ export default {
                 'lb2',
                 'lb3'
             ],
-            count: 9
+            modules: [
+                {route: {name: "Home"}, class:'backgroundImg',text: '拍照', id: 1},
+                {route: {name: "Test"}, class:'backgroundImg',text: '拍照', id: 2},
+                {route: {name: "Test"}, class:'backgroundImg',text: '拍照', id: 3},
+                {route: {name: "Test"}, class:'backgroundImg',text: '拍照', id: 4},
+                {route: {name: "Test"}, class:'backgroundImg',text: '拍照', id: 5},
+                {route: {name: "Test"}, class:'backgroundImg',text: '拍照', id: 6},
+                {route: {name: "Test"}, class:'backgroundImg',text: '拍照', id: 7},
+                {route: {name: "Test"}, class:'backgroundImg',text: '拍照', id: 8},
+                {route: {name: "Test"}, class:'backgroundImg',text: '拍照', id: 9},
+            ]
         }
     }
 }
@@ -38,10 +47,10 @@ export default {
   height: 200px;
   background-color: coral;
 }
-.icon {
-  width: 50px;
-  height: 50px;
-  background-size: cover;
+.backgroundImg {
+    background-size: contain;
+    background-image: url('../../static/icons/ic_camera.png');
+    background-repeat: no-repeat;
 }
 .container {
     display: flex;
@@ -51,16 +60,13 @@ export default {
 }
 .items {
     width: 5rem;
-    margin: 1rem;
+    margin: 1rem 1rem 0 1rem;
     height: 4rem;
-    background-color: rgba(33, 33, 33, 0.3);
-    border: 1px solid transparent;
 }
-.items:hover {
-    border: rgba(33, 33, 33, 0.9) solid 1px;
-    background-color: rgba(33, 33, 33, 0.5);
-
-    transition-property: all;
-    transition-duration: 0.5s;
+.text{
+    padding-left: 2.2rem;
+}
+.link{
+    text-decoration: none;
 }
 </style>
